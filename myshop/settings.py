@@ -23,11 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-s97*kwc56x(_+a2qc&oyhf=y278$9n%921v6#i9vy-@-5iid_7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
 
 # Update this with your VM's external IP or domain name
-ALLOWED_HOSTS = ['35.209.51.219', 'yourdomain.com','omicwears.sytes.net']
+# ALLOWED_HOSTS = ['35.209.51.219', 'yourdomain.com','omicwears.sytes.net']
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+# Update this with your VM's external IP or domain name
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -132,13 +137,13 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # Security settings for production
-SECURE_SSL_REDIRECT = True  # Enable only if using HTTPS
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = 'DENY'
-SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"
+# SECURE_SSL_REDIRECT = True  # Enable only if using HTTPS
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SECURE_BROWSER_XSS_FILTER = True
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+# X_FRAME_OPTIONS = 'DENY'
+# SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -1,191 +1,232 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<html lang="zxx">
 
-    <!-- Title  -->
-    <title>{% block title %}{% endblock title %}</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Male_Fashion Template">
+    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %} {% endblock title %}</title>
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
 
-    <!-- Favicon  -->
-    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}" />
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+    rel="stylesheet">
 
-    <!-- Core Style CSS -->
-    <link rel="stylesheet" href="{% static 'css/core-style.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-  </head>
+    <!-- Css Styles -->
+     
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+</head>
 
-  <body>
-    <!-- Search Wrapper Area Start -->
-    <div class="search-wrapper section-padding-100">
-      <div class="search-close">
-        <i class="fa fa-close" aria-hidden="true"></i>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="search-content">
-              <form action="#" method="get">
-                <input
-                  type="search"
-                  name="search"
-                  id="search"
-                  placeholder="Type your keyword..."
-                />
-                <button type="submit">
-                  <img src="{% static 'img/core-img/search.png' %}" alt="" />
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Search Wrapper Area End -->
+<body>
     
-    {% block content %}
-        {% block message %}
-          {% if messages %}
-          <ul id="messages_box" class="messages">
-              {% for message in messages %}
-                  {% if message.tags == 'error' %}
-                    <div class="alert alert-danger alert-dismissible fade show custom-alert" role="alert">
-                      {{message}}
-                      <strong class="killAlert" style="float: right;cursor: pointer;">&times;</strong>
-                    </div>
-                  {% else %}
-                    <div class="alert alert-{{message.tags}} alert-dismissible fade show custom-alert" role="alert">
-                      {{message}}
-                      <strong class="killAlert" style="float: right;cursor: pointer;">&times;</strong>
-                    </div>
-                  {% endif %}
-              {% endfor %}
-          </ul>
-          {% endif %}
-        {% endblock message %}
 
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__option">
+            <div class="offcanvas__links">
+                <a href="#">Sign in</a>
+                <a href="#">FAQs</a>
+            </div>
+            <div class="offcanvas__top__hover">
+                <span>Usd <i class="arrow_carrot-down"></i></span>
+                <ul>
+                    <li>USD</li>
+                    <li>EUR</li>
+                    <li>USD</li>
+                </ul>
+            </div>
+        </div>
+        <div class="offcanvas__nav__option">
+            <a href="#" class="search-switch"><img src="{% static 'img/icon/search.png' %}" alt=""></a>
+            <a href="#"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
+            <a href="#"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span>0</span></a>
+            <div class="price">$0.00</div>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__text">
+            <p>Free shipping, 30-day return or refund guarantee.</p>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="header__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-7">
+                    <div class="header__top__left">
+                        <p>Free shipping, 30-day return or refund guarantee.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-5">
+                    <div class="header__top__right">
+                        <div class="header__top__links">
+                            <a href="#">Sign in</a>
+                            <a href="#">FAQs</a>
+                        </div>
+                        <div class="header__top__hover">
+                            <span>Usd <i class="arrow_carrot-down"></i></span>
+                            <ul>
+                                <li>USD</li>
+                                <li>EUR</li>
+                                <li>USD</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="header__logo">
+                    <a class="logo" href="/"><img src="{% static 'img/logo.jpeg' %}" alt=""></a>
+                </div>
+            </div>
+            <div class="mt-4 col-lg-6 col-md-6">
+                <nav class="header__menu mobile-menu">
+                    <ul>
+                        <li class="active"><a href="/">Home</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="#">Pages</a>
+                            <ul class="dropdown">
+                                {% comment %} <li><a href="/about">About Us</a></li> {% endcomment %}
+                                {% comment %} <li><a href="/">Shop Details</a></li> {% endcomment %}
+                                <li><a href="/cart">Shopping Cart</a></li>
+                                <li><a href="/orders/create">Check Out</a></li>
+                                {% comment %} <li><a href="/blogdetail">Blog Details</a></li> {% endcomment %}
+                            </ul>
+                        </li>
+                        {% comment %} <li><a href="/contact">Contacts Us</a></li> {% endcomment %}
+                        {% comment %} <li><a href="/blog">Blog</a></li> {% endcomment %}
+                    </ul>
+                </nav>
+            </div>
+            <div class="mt-4 col-lg-3 col-md-3">
+                <div class="header__nav__option">
+                    <a href="#" class="search-switch"><img src="{% static 'img/icon/search.png' %}" alt=""></a>
+                    <a href="#"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
+                    <a href="#"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span>0</span></a>
+                    <div class="price">$0.00</div>
+                </div>
+            </div>
+        </div>
+        <div class="canvas__open mt-4 mr-4"><i class="fa fa-bars"></i></div>
+    </div>
+</header>
+<!-- Header Section End -->
+
+    {% block content %}
+    
     {% endblock content %}
 
-    <!-- ##### Newsletter Area Start ##### -->
-    <section class="newsletter-area section-padding-100-0">
+    <!-- Footer Section Begin -->
+    <footer class="footer">
         <div class="container">
-          <div class="row align-items-center">
-            <!-- Newsletter Text -->
-            <div class="col-12 col-lg-6 col-xl-7">
-              <div class="newsletter-text mb-100">
-                <h2>Subscribe for a <span>25% Discount</span></h2>
-                <p>
-                  Nulla ac convallis lorem, eget euismod nisl. Donec in libero sit
-                  amet mi vulputate consectetur. Donec auctor interdum purus, ac
-                  finibus massa bibendum nec.
-                </p>
-              </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="#"><img src="{% static 'img/footer-logo.jpeg' %}" alt=""></a>
+                        </div>
+                        <p>The customer is at the heart of our unique business model, which includes design.</p>
+                        <a href="#"><img src="{% static 'img/payment.png' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>Shopping</h6>
+                        <ul>
+                            <li><a href="#">Clothing Store</a></li>
+                            <li><a href="#">Trending Shoes</a></li>
+                            <li><a href="#">Accessories</a></li>
+                            <li><a href="#">Sale</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>Shopping</h6>
+                        <ul>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Payment Methods</a></li>
+                            <li><a href="#">Delivary</a></li>
+                            <li><a href="#">Return & Exchanges</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>NewLetter</h6>
+                        <div class="footer__newslatter">
+                            <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                            <form action="#">
+                                <input type="text" placeholder="Your email">
+                                <button type="submit"><span class="icon_mail_alt"></span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- Newsletter Form -->
-            <div class="col-12 col-lg-6 col-xl-5">
-              <div class="newsletter-form mb-100">
-                <form action="#" method="post">
-                  <input
-                    type="email"
-                    name="email"
-                    class="nl-email"
-                    placeholder="Your E-mail"
-                  />
-                  <input type="submit" value="Subscribe" />
-                </form>
-              </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="footer__copyright__text">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <p>Copyright ©
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>2020
+                            All rights reserved | This template is made with <i class="fa fa-heart-o"
+                            aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        </p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-    </section>
-      <!-- ##### Newsletter Area End ##### -->
-  
-    <!-- ##### Footer Area Start ##### -->
-    <footer class="footer_area clearfix">
-      <div class="container">
-        <div class="row align-items-center">
-          <!-- Single Widget Area -->
-          <div class="col-12 col-lg-4">
-            <div class="single_widget_area">
-              <!-- Logo -->
-              <div class="footer-logo mr-50">
-                <a href="/"
-                  ><img src="{% static 'img/core-img/logo2.png' %}" alt=""
-                /></a>
-              </div>
-              <!-- Copywrite Text -->
-              <p class="copywrite">
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;
-                <script>
-                  document.write(new Date().getFullYear());
-                </script>
-                All rights reserved | This template is made with
-                <i class="fa fa-heart-o" aria-hidden="true"></i> by
-                <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->&
-                Re-distributed by
-                <a href="https://themewagon.com/" target="_blank">Themewagon</a>
-              </p>
-            </div>
-          </div>
-          <!-- Single Widget Area -->
-          <div class="col-12 col-lg-8">
-            <div class="single_widget_area">
-              <!-- Footer Menu -->
-              <div class="footer_menu">
-                <nav class="navbar navbar-expand-lg justify-content-end">
-                  <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#footerNavContent"
-                    aria-controls="footerNavContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                  >
-                    <i class="fa fa-bars"></i>
-                  </button>
-                  <div class="collapse navbar-collapse" id="footerNavContent">
-                    <ul class="navbar-nav ml-auto">
-                      <li class="nav-item active">
-                        <a class="nav-link" href="/">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="/shop">Shop</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="/cart">Cart</a>
-                      </li>
-                    </ul>
-                  </div>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </footer>
-    <!-- ##### Footer Area End ##### -->
+    <!-- Footer Section End -->
 
-    <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-    <script src="{% static 'js/customjs.js' %}"></script>
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
 
-    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
-    <!-- Popper js -->
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <!-- Bootstrap js -->
+    <!-- Js Plugins -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <!-- Plugins js -->
-    <script src="{% static 'js/plugins.js' %}"></script>
-    <!-- Active js -->
-    <script src="{% static 'js/active.js' %}"></script>
-  </body>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nicescroll.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/mixitup.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
 </html>

@@ -1,148 +1,158 @@
 {% extends "shop/base.html" %}
 {% load static %}
-{% block title %}Cart{% endblock title %}
+{% block title %}shopping-cart{% endblock title %}
 {% block content %}
-    <!-- ##### Main Content Wrapper Start ##### -->
-    <div class="main-content-wrapper d-flex clearfix">
-      <!-- Mobile Nav (max width 767px)-->
-      <div class="mobile-nav">
-        <!-- Navbar Brand -->
-        <div class="amado-navbar-brand">
-          <a href="/"
-            ><img src="{% static 'img/core-img/logo.png' %}" alt=""
-          /></a>
-        </div>
-        <!-- Navbar Toggler -->
-        <div class="amado-navbar-toggler">
-          <span></span><span></span><span></span>
-        </div>
-      </div>
 
-      <!-- Header Area Start -->
-      <header class="header-area clearfix">
-        <!-- Close Icon -->
-        <div class="nav-close">
-          <i class="fa fa-close" aria-hidden="true"></i>
-        </div>
-        <!-- Logo -->
-        <div class="logo">
-          <a href="/"
-            ><img src="{% static 'img/core-img/logo.png' %}" alt=""
-          /></a>
-        </div>
-        <!-- Amado Nav -->
-        <nav class="amado-nav">
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/shop">Shop</a></li>
-            <li class="active"><a href="/cart">Cart</a></li>
-          </ul>
-        </nav>
-        <!-- Button Group -->
-        <div class="amado-btn-group mt-30 mb-100">
-          <a href="#" class="btn amado-btn mb-15">%Discount%</a>
-          <a href="#" class="btn amado-btn active">New this week</a>
-        </div>
-        <!-- Cart Menu -->
-        <div class="cart-fav-search mb-100">
-          <a href="/cart" class="cart-nav"
-            ><img src="{% static 'img/core-img/cart.png' %}" alt="" /> Cart
-            <span>({{ cart|length }})</span></a
-          >
-          <a href="#" class="fav-nav"
-            ><img src="{% static 'img/core-img/favorites.png' %}" alt="" />
-            Favourite</a
-          >
-          <a href="#" class="search-nav"
-            ><img src="{% static 'img/core-img/search.png' %}" alt="" />
-            Search</a
-          >
-        </div>
-        <!-- Social Button -->
-        <div class="social-info d-flex justify-content-between">
-          <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-          <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-          <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-          <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-        </div>
-      </header>
-      <!-- Header Area End -->
-
-      <div class="cart-table-area section-padding-100">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12 col-lg-8">
-              <div class="cart-title mt-50">
-                <h2>Shopping Cart</h2>
-              </div>
-
-              <div class="cart-table clearfix">
-                <table class="table table-responsive">
-                  <thead>
-                    <tr>
-                      <th></th>
-                      <th>Name</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for item in cart %}
-                      {% with product=item.product %}
-                      <tr>
-                        <td class="cart_product_img">
-                          <a href="{{ product.get_absolute_url }}"
-                            ><img
-                              src="{{ product.image.url }}"
-                              alt="Product"
-                          /></a>
-                        </td>
-                        <td class="cart_product_desc">
-                          <h5>White Modern Chair</h5>
-                        </td>
-                        <td class="price">
-                          <span>${{ item.total_price }}</span>
-                        </td>
-                        <td class="qty">
-                          <div class="qty-btn d-flex">
-                            <form class="quantity" action="{% url "cart:cart_remove" product.id %}" method="post">
-                               <input type="submit" value="Remove">
-                               {% csrf_token %}
-                            </form>
-                            <div class="quantity">
-                              <form action="{% url "cart:cart_add" product.id %}" method="post">
-                                 {{ item.update_quantity_form.quantity }}
-                                 {{ item.update_quantity_form.override }}
-                                 <input type="submit" value="Update">
-                                 {% csrf_token %}
-                                 </form>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      {% endwith %}
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="col-12 col-lg-4">
-              <div class="cart-summary">
-                <h5>Cart Total</h5>
-                <ul class="summary-table">
-                  <li><span>subtotal:</span> <span>${{ cart.get_total_price }}</span></li>
-                  <li><span>delivery:</span> <span>Free</span></li>
-                  <li><span>total:</span> <span>${{ cart.get_total_price }}</span></li>
-                </ul>
-                <div class="cart-btn mt-100">
-                  <a href="{% url "orders:order_create" %}" class="btn amado-btn w-100">Checkout</a>
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>Shopping Cart</h4>
+                        <div class="breadcrumb__links">
+                            <a href="/">Home</a>
+                            <a href="/shop">Shop</a>
+                            <span>Shopping Cart</span>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-    <!-- ##### Main Content Wrapper End ##### -->
+    </section>
+    <!-- Breadcrumb Section End -->
 
+    <!-- Shopping Cart Section Begin -->
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="shopping__cart__table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="{% static 'img/shopping-cart/cart-1.jpg' %}" alt="">
+                                        </div>
+                                        <div class="product__cart__item__text">
+                                            <h6>T-shirt Contrast Pocket</h6>
+                                            <h5>$98.49</h5>
+                                        </div>
+                                    </td>
+                                    <td class="quantity__item">
+                                        <div class="quantity">
+                                            <div class="pro-qty-2">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price">$ 30.00</td>
+                                    <td class="cart__close"><i class="fa fa-close"></i></td>
+                                </tr>
+                                <tr>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="{% static 'img/shopping-cart/cart-2.jpg' %}" alt="">
+                                        </div>
+                                        <div class="product__cart__item__text">
+                                            <h6>Diagonal Textured Cap</h6>
+                                            <h5>$98.49</h5>
+                                        </div>
+                                    </td>
+                                    <td class="quantity__item">
+                                        <div class="quantity">
+                                            <div class="pro-qty-2">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price">$ 32.50</td>
+                                    <td class="cart__close"><i class="fa fa-close"></i></td>
+                                </tr>
+                                <tr>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="{% static 'img/shopping-cart/cart-3.jpg' %}" alt="">
+                                        </div>
+                                        <div class="product__cart__item__text">
+                                            <h6>Basic Flowing Scarf</h6>
+                                            <h5>$98.49</h5>
+                                        </div>
+                                    </td>
+                                    <td class="quantity__item">
+                                        <div class="quantity">
+                                            <div class="pro-qty-2">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price">$ 47.00</td>
+                                    <td class="cart__close"><i class="fa fa-close"></i></td>
+                                </tr>
+                                <tr>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="{% static 'img/shopping-cart/cart-4.jpg' %}" alt="">
+                                        </div>
+                                        <div class="product__cart__item__text">
+                                            <h6>Basic Flowing Scarf</h6>
+                                            <h5>$98.49</h5>
+                                        </div>
+                                    </td>
+                                    <td class="quantity__item">
+                                        <div class="quantity">
+                                            <div class="pro-qty-2">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price">$ 30.00</td>
+                                    <td class="cart__close"><i class="fa fa-close"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="continue__btn">
+                                <a href="#">Continue Shopping</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="continue__btn update__btn">
+                                <a href="#"><i class="fa fa-spinner"></i> Update cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="cart__discount">
+                        <h6>Discount codes</h6>
+                        <form action="#">
+                            <input type="text" placeholder="Coupon code">
+                            <button type="submit">Apply</button>
+                        </form>
+                    </div>
+                    <div class="cart__total">
+                        <h6>Cart total</h6>
+                        <ul>
+                            <li>Subtotal <span>$ 169.50</span></li>
+                            <li>Total <span>$ 169.50</span></li>
+                        </ul>
+                        <a href="#" class="primary-btn">Proceed to checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
 {% endblock content %}
