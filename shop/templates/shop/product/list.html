@@ -209,19 +209,20 @@
                     </div>
                 </div>
                 <div class="row">
+                    {% for product in products %}
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{% static 'img/product/product-2.jpg' %}">
+                            <div class="product__item__pic set-bg" data-setbg="{{ product.image.url }}">
                                 <ul class="product__hover">
                                     <li><a href="#"><img src="{% static 'img/icon/heart.png' %}" alt=""></a></li>
                                     <li><a href="#"><img src="{% static 'img/icon/compare.png' %}" alt=""> <span>Compare</span></a>
                                     </li>
-                                    <li><a href="#"><img src="{% static 'img/icon/search.png' %}" alt=""></a></li>
+                                    <li><a href="#" class="add-cart" data-productid="{{ product.id }}"><img src="{% static 'img/cart.png' %}" alt=""></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <h6>Piqué Biker Jacket</h6>
-                                <a href="#" class="add-cart">+ Add To Cart</a>
+                                <h6>{{ product.name }}</h6>
+                                <a href="#">View Product</a>
                                 <div class="rating">
                                     <i class="fa fa-star-o"></i>
                                     <i class="fa fa-star-o"></i>
@@ -229,7 +230,7 @@
                                     <i class="fa fa-star-o"></i>
                                     <i class="fa fa-star-o"></i>
                                 </div>
-                                <h5>$67.24</h5>
+                                <h5>${{ product.price }}</h5>
                                 <div class="product__color__select">
                                     <label for="pc-4">
                                         <input type="radio" id="pc-4">
@@ -244,6 +245,7 @@
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item sale">
                             <div class="product__item__pic set-bg" data-setbg="{% static 'img/product/product-3.jpg' %}">
@@ -649,5 +651,22 @@
         </div>
     </div>
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded',()=>{
+        ptocart = Array.from(document.getElementsByClassName('add-cart'))
+        ptocart.forEach(element => {
+            element.onclick = (event)=>{
+                const productid = event.target.parentNode.dataset.productid
+                console.log(event.target.dataset.productid)
+                const form = document.createElement('form')
+                form.method = 'POST'
+                form.action = `{{ request.scheme }}://{{ request.get_host }}/cart/add/${productid}/`
+                form.innerHTML = `{{ cart_product_form }}{% csrf_token %}`
+                document.body.appendChild(form);
+                form.submit()
+            }
+        });
+    })
+</script>
 <!-- Shop Section End -->
 {% endblock content %}
