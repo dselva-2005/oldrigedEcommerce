@@ -1,0 +1,97 @@
+{% load custom_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .payment-container {
+            background: #ffffff;
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .payment-container h1 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .payment-container p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .payment-container .amount {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 20px;
+        }
+        
+        .payment-container button {
+            background-color: #27ae60;
+            color: white;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .payment-container button:hover {
+            background-color: #219150;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <h1>Complete Your Payment</h1>
+        <p>You're about to pay:</p>
+        <div class="amount">₹{{ razorpay_amount|divide:100 }}</div>
+        <button id="pay-btn">Pay Now</button>
+    </div>
+    
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        document.getElementById('pay-btn').onclick = function (e) {
+            // Initialize Razorpay Checkout
+            var options = {
+                key: "{{ razorpay_merchant_key }}", // Razorpay Merchant Key
+                amount: "{{ razorpay_amount }}", // Amount in subunits (e.g., paise for INR)
+                currency: "{{ currency }}",
+                name: "developer",
+                order_id: "{{ razorpay_order_id }}", // Razorpay Order ID
+                callback_url: "{{ callback_url }}", // Your callback URL
+                notes:"{{order_id}}",
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+            e.preventDefault();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}Checkout{% endblock title %}
+{% block content %}
+
+<!-- ##### Main Content Wrapper Start ##### -->
+<div class="main-content-wrapper d-flex clearfix">
+
+    <!-- Mobile Nav (max width 767px)-->
+    <div class="mobile-nav">
+        <!-- Navbar Brand -->
+        <div class="amado-navbar-brand">
+            <a href="/"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+        </div>
+        <!-- Navbar Toggler -->
+        <div class="amado-navbar-toggler">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <!-- Header Area Start -->
+    <header class="header-area clearfix">
+        <!-- Close Icon -->
+        <div class="nav-close">
+            <i class="fa fa-close" aria-hidden="true"></i>
+        </div>
+        <!-- Logo -->
+        <div class="logo">
+            <a href="/"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+        </div>
+        <!-- Amado Nav -->
+        <nav class="amado-nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/shop">Shop</a></li>
+                <li><a href="/cart">Cart</a></li>
+            </ul>
+        </nav>
+        <!-- Button Group -->
+        <div class="amado-btn-group mt-30 mb-100">
+            <a href="#" class="btn amado-btn mb-15">%Discount%</a>
+            <a href="#" class="btn amado-btn active">New this week</a>
+        </div>
+        <!-- Cart Menu -->
+        <div class="cart-fav-search mb-100">
+            <a href="/cart" class="cart-nav"><img src="{% static 'img/core-img/cart.png' %}" alt=""> Cart
+                <span>({{ cart|length }})</span></a>
+            <a href="#" class="fav-nav"><img src="{% static 'img/core-img/favorites.png' %}" alt=""> Favourite</a>
+            <a href="#" class="search-nav"><img src="{% static 'img/core-img/search.png' %}" alt=""> Search</a>
+        </div>
+        <!-- Social Button -->
+        <div class="social-info d-flex justify-content-between">
+            <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        </div>
+    </header>
+    <!-- Header Area End -->
+
+    <div class="cart-table-area section-padding-100">
+        <div class="container-fluid">
+            {% block message %}
+            {{ block.super }}
+            {% endblock message %}
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <div class="checkout_details_area mt-50 clearfix">
+
+                        <div class="cart-title">
+                            <h2>Checkout</h2>
+                        </div>
+
+                        <form id="checkout_form" action="{% url 'orders:order_create' %}" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    {{form.first_name}}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {{form.last_name}}
+                                </div>
+                                <div class="col-12 mb-3">
+                                    {{form.email}}
+                                </div>
+                                <div class="col-12 mb-3">
+                                    {{form.address}}
+                                </div>
+                                <div class="col-12 mb-3">
+                                    {{form.postal_code}}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {{form.city}}
+                                </div> 
+                                <div class="col-md-6 mb-3">
+                                    {{form.payment_mode}}
+                                </div>
+                            </div>
+                            <div class="cart-btn mt-100">
+                                <button type="submit" class="btn amado-btn w-100" {% if cart|length == 0 %}disabled{% else %}{% endif %} >Checkout</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="cart-summary">
+                        <h5>Cart Total</h5>
+                        <ul class="summary-table">
+                            <li><span>subtotal:</span> <span>${{ cart.get_total_price }}</span></li>
+                            <li><span>delivery:</span> <span>Free</span></li>
+                            <li><span>total:</span> <span>${{ cart.get_total_price }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Main Content Wrapper End ##### -->
+{% endblock content %}
