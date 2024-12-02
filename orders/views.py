@@ -87,7 +87,12 @@ def order_create(request):
     else:
         if cart.get_total_price() == 0:
                 messages.error(request,"Cart is empty checkout is disabled")
-        form = OrderCreateForm()
+        form = OrderCreateForm({'first_name':'dselva',
+                                'last_name':'jagan',
+                                'email':'dselvajagan@gmail.com',
+                                'address':'example',
+                                'postal_code':'3223443',
+                                'city':'mumbai'})
         return render(request,
         'orders/order/create.html',
         {'cart': cart, 'form': form})
