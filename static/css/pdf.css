@@ -1,0 +1,19 @@
+.status {
+    position: absolute;
+    top: 42%;
+    left: 59%;
+    font-size: 2rem;
+    transform: rotate(-25deg);
+    padding: 1%;
+    border: 3px solid;
+}
+
+.paid {
+    color: rgb(27, 230, 44);
+    border-color: rgb(27, 230, 44);
+}
+
+.pending {
+    color: rgb(230, 68, 27);
+    border-color: rgb(230, 68, 27);
+}
