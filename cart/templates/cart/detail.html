@@ -47,7 +47,7 @@
                                         </div>
                                         <div class="product__cart__item__text">
                                             <a href="{{product.get_absolute_url}}"><h6>{{product.name}}</h6></a>
-                                            <h5>${{product.price}}</h5>
+                                            <h5>₹{{product.price}}</h5>
                                         </div>
                                     </td>
                                     <td class="quantity__item">
@@ -58,7 +58,7 @@
                                             {% csrf_token %}
                                          </form>
                                     </td>
-                                    <td class="cart__price">${{item.total_price}}</td>
+                                    <td class="cart__price">₹{{item.total_price}}</td>
                                     <td class="cart__close">
                                         <form  class="quantity" action="{% url 'cart:cart_remove' product.id %}" method="post">
                                             {% csrf_token %}
@@ -92,8 +92,8 @@
                     <div class="cart__total">
                         <h6>Cart total</h6>
                         <ul>
-                            <li>Subtotal <span>${{ cart.get_total_price }}</span></li>
-                            <li>Total <span>${{ cart.get_total_price }}</span></li>
+                            <li>Subtotal <span>₹{{ cart.get_total_price }}</span></li>
+                            <li>Total <span>₹{{ cart.get_total_price }}</span></li>
                         </ul>
                         <a href="{% url "orders:order_create" %}" class="primary-btn">Proceed to checkout</a>
                     </div>
