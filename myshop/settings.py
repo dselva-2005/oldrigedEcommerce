@@ -23,16 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-s97*kwc56x(_+a2qc&oyhf=y278$9n%921v6#i9vy-@-5iid_7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
 
 # Update this with your VM's external IP or domain name
-ALLOWED_HOSTS = ['omicwears.sytes.net','www.omicwears.sytes.net']
+# ALLOWED_HOSTS = ['omicwears.sytes.net','www.omicwears.sytes.net']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
 # Update this with your VM's external IP or domain name
-# ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
