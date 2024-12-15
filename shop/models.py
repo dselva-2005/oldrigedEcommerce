@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-
+from django.core.validators import MaxValueValidator,MinValueValidator
 
 # Create your models here.
 class Category(models.Model):
@@ -51,4 +51,45 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
-    
+
+class ProductImage(models.Model):
+    name = models.CharField(max_length=30)
+    product = models.ForeignKey(Product,related_name='images',on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='products/%Y/%m/%d/')
+
+    def __str__(self):
+        return self.name
+
+
+class ProductReview(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE,related_name='reviews')
+    created = models.DateTimeField(auto_now_add=True)
+    body = models.TextField(null=False)
+    rating = models.IntegerField(choices=[
+        (1,'Terrible'),
+        (2,'poor'),
+        (3,'Average'),
+        (4,'Good'),
+        (5,'Excellent'),
+    ],default=5,
+    validators=[MaxValueValidator(5),MinValueValidator(1)])
+
+    class Meta:
+        ordering = ['-created']
+
+
+class SiteReviewModel(models.Model):
+
+    created = models.DateTimeField(auto_now_add=True)
+    body = models.TextField(null=False)
+    rating = models.IntegerField(choices=[
+        (1,'Terrible'),
+        (2,'poor'),
+        (3,'Average'),
+        (4,'Good'),
+        (5,'Excellent'),
+    ],default=5,
+    validators=[MaxValueValidator(5),MinValueValidator(1)])
+
+    class Meta:
+        ordering = ['-created']

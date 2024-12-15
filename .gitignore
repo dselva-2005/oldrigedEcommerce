@@ -1,2 +1,40 @@
-.venv
-django_debug.log
+# Python Bytecode files
+*.py[cod]
+*$py.class
+**/__pycache__/
+
+# Django specific
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+media/
+staticfiles/
+static/
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Django migrations folder (if you don't want to version control migrations)
+# You can remove this line if you want to track migrations
+migrations/
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Local settings (you can also set your settings.py to be ignored if you don't want to share secrets)
+local_settings.py
+settings_local.py
