@@ -23,7 +23,8 @@ class Category(models.Model):
     def __str__(self):
         return self.name
         
-        
+    def count(self):
+        return Product.objects.filter(category=self).count()
 
 class Product(models.Model):
     category = models.ForeignKey(Category,on_delete=models.CASCADE, related_name='products')
