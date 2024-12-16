@@ -23,20 +23,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-s97*kwc56x(_+a2qc&oyhf=y278$9n%921v6#i9vy-@-5iid_7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
 
 # Update this with your VM's external IP or domain name
-ALLOWED_HOSTS = ['omicwears.sytes.net','www.omicwears.sytes.net']
+# ALLOWED_HOSTS = ['omicwears.sytes.net','www.omicwears.sytes.net']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
 # Update this with your VM's external IP or domain name
-# ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
 INSTALLED_APPS = [
+    # first preference
+    'accounts.apps.AccountsConfig',
     # default apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -67,7 +69,7 @@ ROOT_URLCONF = 'myshop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -174,3 +176,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 RAZOR_KEY_ID = 'rzp_test_6DO6fVM468pejE'
 RAZOR_KEY_SECRET = '9ldqP8NZjzGuEhrXuL6CQKDA'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = '/'  # Redirect to the homepage after login
