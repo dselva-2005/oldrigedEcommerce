@@ -2,6 +2,9 @@
 {% load static %}
 {% block title %}Home{% endblock title %}
 {% block content %}
+{% block message %}
+    {{ block.super }}
+{% endblock message %}
 <section class="hero">
     <div class="hero__slider owl-carousel">
         <div class="hero__items set-bg" data-setbg="{% static 'img/hero/hero-1.jpg' %}">
