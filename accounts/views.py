@@ -10,7 +10,7 @@ def register_view(request):
             user = form.save()
             login(request, user)  # Automatically log the user in after registration
             messages.success(request, 'Your account has been created successfully!')
-            return redirect('home')  # Redirect to the home page or any other page
+            return redirect('shop:home')  # Redirect to the home page or any other page
     else:
         form = CustomUserCreationForm()
 
