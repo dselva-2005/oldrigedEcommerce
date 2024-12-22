@@ -179,3 +179,4 @@ RAZOR_KEY_SECRET = '9ldqP8NZjzGuEhrXuL6CQKDA'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = '/'  # Redirect to the homepage after login
+#LOGOUT_REDIRECT_URL = '/'
