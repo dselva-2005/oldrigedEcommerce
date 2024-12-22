@@ -40,7 +40,14 @@
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
             <div class="offcanvas__links">
+                {% if request.user.is_authenticated %}
+                <form class="d-inline" action="{% url 'accounts:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" style="background-color:rgb(255, 255, 255);border: none;" class="btn">Logout</button>
+                </form>
+                {% else %}
                 <a href="{% url 'accounts:login' %}">Sign in</a>
+                {% endif %}
                 <a href="#">FAQs</a>
             </div>
             <div class="offcanvas__top__hover">
