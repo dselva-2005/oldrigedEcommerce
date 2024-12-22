@@ -213,4 +213,8 @@
         });
     });
 
+    $('.killAlert').on('click', function() {
+        $(this).parent().remove(); // Removes the parent element
+    });
+
 })(jQuery);
