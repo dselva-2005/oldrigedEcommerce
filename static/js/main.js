@@ -214,9 +214,3 @@
     });
 
 })(jQuery);
-$(document).ready(function() {
-    // Cancelling dismissable notification/message
-    $('.killAlert').on('click', function() {
-        $(this).parent().remove(); // Removes the parent element
-    });
-});
