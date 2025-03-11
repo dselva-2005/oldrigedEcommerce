@@ -51,12 +51,6 @@ def home(request):
 
    return render(request,'shop/home.html',{'products':products})
 
-def contact_page(request):
-    return render(request,'shop/contactus.html')
-
-def policies_page(request):
-    return render(request,'shop/policies.html')
-
 
 def post_search(request):
     query = None
@@ -110,3 +104,16 @@ def feedback(request):
     form = SiteReviewForm()
     return render(request,'shop/feedback.html',{'form':form,
                                                 'reviews':reviews})
+
+def contact_us(requests):
+    return render(requests, 'shop/contact_us.html')
+
+def payment_methods(requests):
+    return render(requests, 'shop/payment_methods.html')
+
+
+def delivery(requests):
+    return render(requests, 'shop/delivery.html')
+
+def return_exch(requests):
+    return render(requests, 'shop/return_exch.html')

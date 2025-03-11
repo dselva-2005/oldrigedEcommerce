@@ -1,0 +1,37 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}Return & Exchange Policy{% endblock title %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="policy-container mx-auto p-4 shadow-lg rounded bg-white" style="max-width: 700px;">
+        <h3 class="text-center mb-4">Return & Exchange Policy</h3>
+        <p>We want you to be fully satisfied with your purchase. Please read our return and exchange policy below:</p>
+
+        <h5>1. Return Eligibility</h5>
+        <ul>
+            <li>Items can be returned within **7 days** of delivery.</li>
+            <li>Products must be unused, in their original packaging, and with all tags intact.</li>
+            <li>Returns are not accepted for perishable items, personalized products, or hygiene-sensitive goods.</li>
+        </ul>
+
+        <h5>2. Exchange Policy</h5>
+        <ul>
+            <li>Exchanges are allowed for defective or incorrect products.</li>
+            <li>Customers must raise an exchange request within **7 days** of receiving the order.</li>
+        </ul>
+
+        <h5>3. Refund Process</h5>
+        <p>Once we receive your returned item, refunds will be processed within **5-7 business days** to your original payment method.</p>
+
+        <h5>4. Return Shipping</h5>
+        <p>Customers are responsible for return shipping costs unless the item is defective or incorrect.</p>
+
+        <h5>5. How to Initiate a Return/Exchange</h5>
+        <p>To start a return or exchange, please contact our customer support at <a href="{% url 'shop:contact_us' %}">Contact Us</a>.</p>
+
+        <p class="text-center mt-4"><strong>For more details, please reach out to our support team.</strong></p>
+    </div>
+</div>
+
+{% endblock %}

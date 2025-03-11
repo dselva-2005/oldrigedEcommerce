@@ -1,0 +1,36 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}Payment Methods Policy{% endblock title %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="policy-container mx-auto p-4 shadow-lg rounded bg-white" style="max-width: 700px;">
+        <h3 class="text-center mb-4">Payment Methods Policy</h3>
+        <p>We offer multiple payment methods for a seamless shopping experience. Please review our policy below:</p>
+
+        <h5>1. Accepted Payment Methods</h5>
+        <ul>
+            <li><strong>Credit/Debit Cards:</strong> Visa, MasterCard, American Express, and RuPay.</li>
+            <li><strong>UPI Payments:</strong> Google Pay, PhonePe, Paytm, and BHIM UPI.</li>
+            <li><strong>Net Banking:</strong> Available for major Indian banks.</li>
+            <li><strong>Wallet Payments:</strong> Paytm Wallet, Amazon Pay, and Mobikwik.</li>
+            <li><strong>Cash on Delivery (COD):</strong> Available for select locations.</li>
+        </ul>
+
+        <h5>2. Security & Encryption</h5>
+        <p>All transactions are encrypted using **SSL security** to ensure the safety of your payment information.</p>
+
+        <h5>3. Payment Failures & Refunds</h5>
+        <p>If a payment fails but the amount is deducted, it will be refunded within **5-7 business days**.</p>
+
+        <h5>4. EMI & Installment Plans</h5>
+        <p>We offer EMI options for purchases above ₹5000 on select credit cards.</p>
+
+        <h5>5. Fraud Prevention</h5>
+        <p>For security reasons, we may require additional verification for high-value transactions.</p>
+
+        <p class="text-center mt-4"><strong>For payment-related issues, please <a href="{% url 'shop:contact_us' %}">Contact Us</a>.</strong></p>
+    </div>
+</div>
+
+{% endblock %}
